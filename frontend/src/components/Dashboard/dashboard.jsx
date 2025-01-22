@@ -3,6 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { Activity, AlertTriangle, Battery, Clock, Thermometer, Heart, Droplet } from 'lucide-react';
 import socketService from '../../services/socketService';
 import Alert from '../common/Alert';
+import HistoricalData from './HistoricalData';
 
 const Dashboard = () => {
     // State management
@@ -137,7 +138,7 @@ const Dashboard = () => {
             {/* Header Section */}
             <div className="mb-8">
                 <div className="flex items-center justify-between">
-                    <h1 className="text-2xl font-bold text-gray-800">Medical Device Dashboard</h1>
+                    <h1 className="text-2xl font-bold text-gray-800">Device Dashboard</h1>
                     <div className="flex items-center space-x-4">
                         {/* Connection Status */}
                         <div className="flex items-center">
@@ -197,6 +198,10 @@ const Dashboard = () => {
                     "#3b82f6",
                     <Droplet className="text-blue-500 h-6 w-6" />
                 )}
+            </div>
+
+            <div className="mt-8">
+                <HistoricalData />
             </div>
 
             {/* Simulation Notice */}
