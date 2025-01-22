@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Calendar, ChevronDown } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 const HistoricalData = () => {
     // State to store our historical readings
@@ -15,7 +15,7 @@ const HistoricalData = () => {
                 setIsLoading(true);
                 const response = await fetch('http://localhost:5000/api/devices/demo-device-001/readings');
                 const data = await response.json();
-                
+
                 // Process the data to format timestamps and sort by date
                 const processedData = data.map(reading => ({
                     ...reading,
