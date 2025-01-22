@@ -30,6 +30,15 @@ const HistoricalData = () => {
             }
         };
 
+        const formatTimestamp = (timestamp) => {
+            const date = new Date(timestamp);
+            return date.toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+        };
+
         fetchHistoricalData();
     }, [timeRange]);
 
@@ -51,17 +60,34 @@ const HistoricalData = () => {
                     </select>
                 </div>
             </div>
-            <ResponsiveContainer width="100%" height={200}>
-                <LineChart data={historicalData}>
+            <ResponsiveContainer width="100%" height={300}> {/* Increased height for better readability */}
+                <LineChart 
+                    data={historicalData}
+                    margin={{ 
+                        top: 10,    // Space at the top of the chart
+                        right: 30,  // Space for the rightmost values
+                        left: 20,   // Space for the y-axis labels
+                        bottom: 50  // Increased bottom margin for x-axis labels
+                    }}
+                >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
                         dataKey="timestamp"
                         tick={{ fontSize: 12 }}
-                        angle={-45}
-                        textAnchor="end"
+                        angle={-45}  // Angle the labels for better fit
+                        textAnchor="end"  // Align the rotated text
+                        tickFormatter={formatTimestamp}  // Use custom formatter
+                        height={40}  // Increased height for the x-axis
+                        interval="preserveStart"  // More consistent intervals
                     />
-                    <YAxis />
-                    <Tooltip />
+                    <YAxis 
+                        tick={{ fontSize: 12 }}
+                        width={40}  // More space for y-axis labels
+                    />
+                    <Tooltip 
+                        labelFormatter={(label) => new Date(label).toLocaleString()}
+                        contentStyle={{ fontSize: '12px' }}
+                    />
                     <Line 
                         type="monotone"
                         dataKey={dataKey}
