@@ -8,6 +8,15 @@ const HistoricalData = () => {
     const [timeRange, setTimeRange] = useState('24h'); // Default to last 24 hours
     const [isLoading, setIsLoading] = useState(true);
 
+    const formatTimestamp = (timestamp) => {
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        });
+    };
+
     // Fetch historical data when component mounts or timeRange changes
     useEffect(() => {
         const fetchHistoricalData = async () => {
@@ -28,15 +37,6 @@ const HistoricalData = () => {
             } finally {
                 setIsLoading(false);
             }
-        };
-
-        const formatTimestamp = (timestamp) => {
-            const date = new Date(timestamp);
-            return date.toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
         };
 
         fetchHistoricalData();
