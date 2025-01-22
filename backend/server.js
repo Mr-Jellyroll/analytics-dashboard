@@ -4,10 +4,10 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
-// Create an HTTP server using our Express app
+// Create an HTTP server
 const server = http.createServer(app);
 
-// Initialize Socket.IO with CORS settings for our frontend
+// Initialize Socket.IO with CORS settings for frontend
 const io = new Server(server, {
     cors: {
         origin: "http://localhost:3000",
