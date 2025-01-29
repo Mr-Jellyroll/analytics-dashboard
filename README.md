@@ -1,10 +1,16 @@
 # Device Dashboard
 
-This dashboard provides real-time monitoring and historical analysis of IoT device data. Test project is designed for tracking vital signs including heart rate, temperature, and oxygen levels. Uses React for the frontend and Node.js for the backend, and real-time updates through WebSocket connections.
+Practice project using JavaScript. This dash provides real-time monitoring and historical data from example IoT device inputs. Test project is designed for tracking vital signs including heart rate, temperature, and oxygen levels. Uses React for the frontend and Node.js for the backend, and real-time updates through WebSocket connections.
 
 ## System Architecture
 
-Built using a full-stack JavaScript architecture:
+Built using a full-stack JavaScript:
+
+### Data Flow
+1. The backend generates simulated device readings every 2 seconds
+2. Readings are stored in MongoDB and simultaneously broadcast to connected clients
+3. The frontend receives updates through WebSocket connection
+4. Data is displayed in real-time charts and updated historical views
 
 ### Frontend
 - **React** for the user interface
@@ -20,8 +26,6 @@ Built using a full-stack JavaScript architecture:
 - **Mongoose** for database modeling
 
 ## Features
-
-The dashboard provides comprehensive monitoring capabilities:
 
 ### Real-Time Monitoring
 - Live vital sign tracking (heart rate, temperature, oxygen levels)
@@ -47,30 +51,30 @@ The dashboard provides comprehensive monitoring capabilities:
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repo:
 ```bash
 git clone [repository-url]
 ```
 
-2. Install frontend dependencies:
+2. Install frontend deps:
 ```bash
 cd frontend
 npm install
 ```
 
-3. Install backend dependencies:
+3. Install backend deps:
 ```bash
 cd backend
 npm install
 ```
 
-4. Create a `.env` file in the backend directory:
+4. Create a `.env` file in the backend dir:
 ```
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 ```
 
-### Running the Application
+### Running the App
 
 1. Start the backend server:
 ```bash
@@ -78,13 +82,13 @@ cd backend
 npm start
 ```
 
-2. Start the frontend development server:
+2. Start the frontend dev server:
 ```bash
 cd frontend
 npm start
 ```
 
-## Application Structure
+## App Structure
 
 ### Frontend Structure
 ```
@@ -113,11 +117,3 @@ backend/
 ├── server.js
 └── package.json
 ```
-
-## Technical Details
-
-### Data Flow
-1. The backend generates simulated device readings every 2 seconds
-2. Readings are stored in MongoDB and simultaneously broadcast to connected clients
-3. The frontend receives updates through WebSocket connection
-4. Data is displayed in real-time charts and updated historical views
